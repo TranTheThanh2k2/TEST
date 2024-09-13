@@ -282,6 +282,20 @@
   object-fit: contain;
 }
 
+.cart-quantity-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
 .cart-quantity-btn:hover {
   background-color: #2980b9;
 }
@@ -346,7 +360,7 @@
   }
 
   .cart-table {
-    font-size: 0.8rem; 
+    font-size: 0.5rem; 
   }
 
   .cart-table th, .cart-table td {

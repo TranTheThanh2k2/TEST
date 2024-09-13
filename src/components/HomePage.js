@@ -198,7 +198,7 @@ const HomePage = () => {
                             <img src={item.image} alt={item.name} className="cart-item-image" />
                           </td>
                           <td>{item.name}</td>
-                          <td>
+                          <td className="cart-quantity-inline">
                             <button className="cart-quantity-btn" onClick={() => handleDecrementQuantity(item.id)}>-</button>
                             {item.quantity}
                             <button className="cart-quantity-btn" onClick={() => handleIncrementQuantity(item.id)}>+</button>
@@ -233,3 +233,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
