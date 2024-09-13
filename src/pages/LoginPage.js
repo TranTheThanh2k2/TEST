@@ -37,7 +37,7 @@ const LoginPage = () => {
       <div className="login-box">
         <h1 className="login-title">Đăng nhập</h1>
         
-        {error && <p className="login-error">{error}</p>}
+        {error && <p style={{color:'red'}} className="login-error">{error}</p>}
 
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
