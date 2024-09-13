@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Lấy thông tin giỏ hàng từ localStorage hoặc khởi tạo giỏ hàng rỗng
 const savedCart = JSON.parse(localStorage.getItem('cart')) || {
   items: [],
   totalQuantity: 0,
@@ -24,12 +23,12 @@ const cartSlice = createSlice({
         state.items.push({
           ...product,
           quantity: 1,
-          totalPrice: product.price, // Tổng giá của sản phẩm khi được thêm lần đầu
+          totalPrice: product.price,
         });
       }
 
       state.totalQuantity += 1; 
-      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); // Tính lại tổng tiền
+      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0);
       localStorage.setItem('cart', JSON.stringify(state));
     },
     removeFromCart(state, action) {
@@ -41,7 +40,7 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== id);
       }
 
-      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); // Tính lại tổng tiền sau khi xóa
+      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); 
       localStorage.setItem('cart', JSON.stringify(state));
     },
     incrementQuantity(state, action) {
@@ -50,11 +49,11 @@ const cartSlice = createSlice({
 
       if (existingItem) {
         existingItem.quantity += 1;
-        existingItem.totalPrice = existingItem.quantity * existingItem.price; // Cập nhật tổng giá của sản phẩm
+        existingItem.totalPrice = existingItem.quantity * existingItem.price;
         state.totalQuantity += 1;
       }
 
-      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); // Tính lại tổng tiền
+      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); 
       localStorage.setItem('cart', JSON.stringify(state));
     },
     decrementQuantity(state, action) {
@@ -63,14 +62,14 @@ const cartSlice = createSlice({
 
       if (existingItem && existingItem.quantity > 1) {
         existingItem.quantity -= 1;
-        existingItem.totalPrice = existingItem.quantity * existingItem.price; // Cập nhật tổng giá của sản phẩm
+        existingItem.totalPrice = existingItem.quantity * existingItem.price; 
         state.totalQuantity -= 1;
       } else if (existingItem && existingItem.quantity === 1) {
         state.items = state.items.filter((item) => item.id !== id);
         state.totalQuantity -= 1;
       }
 
-      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0); // Tính lại tổng tiền
+      state.totalPrice = state.items.reduce((total, item) => total + item.totalPrice, 0);
       localStorage.setItem('cart', JSON.stringify(state));
     },
     clearCart(state) {
